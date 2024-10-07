@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function findRepeatedWords(text) {
+            // Convert the text to lowercase and split it into words
+            const words = text.toLowerCase().match(/\b\w+\b/g);
+        
+            // Create an object to keep track of word frequencies
+            const wordCount = {};
+        
+            // Iterate over each word and update the count in the wordCount object
+            words.forEach(word => {
+                if (wordCount[word])
+                 {
+                    wordCount[word]++;
+                } 
+                else
+                 {
+                    wordCount[word] = 1;
+                }
+            });
+        
+            // Find and return words that are repeated
+            const repeatedWords = {};
+            for (const [word, count] of Object.entries(wordCount)) {
+                if (count > 1) {
+                    repeatedWords[word] = count;
+                }
+            }
+        
+            return repeatedWords;
+        }
+        
+        // Example usage
+        const text = "This is a test. This test is only a test." ;
+        const result = findRepeatedWords(text);
+        console.log(result); // Output: { this: 2, test: 3, is: 2, a: 2 }
+        
+
+
+
+
+    </script>
+</body>
+</html>
